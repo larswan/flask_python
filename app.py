@@ -1,8 +1,8 @@
 import os
 from flask import Flask, send_file
 from flask_migrate import Migrate
-from flask_cors import CORS
-from config import Config
+from flask_cors import CORS 
+from config import Config # 
 from models import db
 
 app = Flask(__name__, static_folder='public')
@@ -11,9 +11,12 @@ app.config.from_object(Config)
 db.init_app(app)
 migrate = Migrate(app, db)
 
-@app.get('/')
+@app.route('/')
 def home():
     return send_file('welcome.html')
+
+# @app.route('/users')
+
 
 
 if __name__ == '__main__':
